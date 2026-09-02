@@ -1,5 +1,5 @@
 import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { SplitText } from "gsap/SplitText"; // Importing SplitText from gsap/SplitText instead of gsap-trial/SplitText
 
 // Register only free plugins
 gsap.registerPlugin(ScrollTrigger);

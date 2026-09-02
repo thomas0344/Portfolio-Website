@@ -2,7 +2,7 @@ import gsap from "gsap";
 import { smoother } from "../Navbar";
 
 // --- FREE VANILLA JS TEXT SPLITTER ---
-// Replaces the paid gsap-trial/SplitText plugin
+// Replaces the paid gsap/SplitText plugin
 function createSplitText(selectors: string | string[]) {
   const charsArray: HTMLElement[] = [];
   const selectorArray = Array.isArray(selectors) ? selectors : [selectors];
