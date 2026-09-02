@@ -1,55 +1,18 @@
 import gsap from "gsap";
-import { SplitText } from "gsap/SplitText"; // Importing SplitText from gsap/SplitText instead of gsap-trial/SplitText
-
-// Register only free plugins
-gsap.registerPlugin(ScrollTrigger);
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { SplitText } from "gsap/SplitText";
 
 interface ParaElement extends HTMLElement {
   anim?: gsap.core.Animation;
+  split?: SplitText;
 }
 
-// --- FREE VANILLA JS TEXT SPLITTER ---
-// This replaces the premium gsap-trial/SplitText plugin
-function splitTextToElements(element: HTMLElement) {
-  const text = element.innerText;
-  element.innerHTML = ""; // Clear existing content
-  
-  const words = text.split(" ");
-  const wordElements: HTMLElement[] = [];
-  const charElements: HTMLElement[] = [];
-
-  words.forEach((word, wordIndex) => {
-    const wordSpan = document.createElement("span");
-    wordSpan.className = "split-word";
-    wordSpan.style.display = "inline-block";
-    
-    const chars = word.split("");
-    chars.forEach((char) => {
-      const charSpan = document.createElement("span");
-      charSpan.className = "split-char";
-      charSpan.style.display = "inline-block";
-      charSpan.innerText = char;
-      wordSpan.appendChild(charSpan);
-      charElements.push(charSpan);
-    });
-
-    element.appendChild(wordSpan);
-    wordElements.push(wordSpan);
-
-    if (wordIndex < words.length - 1) {
-      // Add a non-breaking space between words
-      element.appendChild(document.createTextNode("\u00A0"));
-    }
-  });
-
-  return { words: wordElements, chars: charElements };
-}
-// --------------------------------------
+// Register the official plugins
+gsap.registerPlugin(ScrollTrigger, SplitText);
 
 export default function setSplitText() {
   ScrollTrigger.config({ ignoreMobileResize: true });
   
-  // Fixed typo: "retuxrn" changed to "return"
   if (window.innerWidth < 900) return; 
 
   const paras: NodeListOf<ParaElement> = document.querySelectorAll(".para");
@@ -60,16 +23,19 @@ export default function setSplitText() {
 
   paras.forEach((para: ParaElement) => {
     para.classList.add("visible");
-    
     if (para.anim) {
       para.anim.progress(1).kill();
+      para.split?.revert();
     }
 
-    // Apply our free splitter
-    const split = splitTextToElements(para);
+    // Using the official SplitText!
+    para.split = new SplitText(para, {
+      type: "lines,words",
+      linesClass: "split-line",
+    });
 
     para.anim = gsap.fromTo(
-      split.words, // Animate the word elements
+      para.split.words,
       { autoAlpha: 0, y: 80 },
       {
         autoAlpha: 1,
@@ -89,13 +55,17 @@ export default function setSplitText() {
   titles.forEach((title: ParaElement) => {
     if (title.anim) {
       title.anim.progress(1).kill();
+      title.split?.revert();
     }
     
-    // Apply our free splitter
-    const split = splitTextToElements(title);
-
+    // Using the official SplitText!
+    title.split = new SplitText(title, {
+      type: "chars,lines",
+      linesClass: "split-line",
+    });
+    
     title.anim = gsap.fromTo(
-      split.chars, // Animate the char elements
+      title.split.chars,
       { autoAlpha: 0, y: 80, rotate: 10 },
       {
         autoAlpha: 1,
