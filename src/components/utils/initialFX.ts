@@ -1,24 +1,67 @@
-import { SplitText } from "gsap-trial/SplitText";
 import gsap from "gsap";
 import { smoother } from "../Navbar";
 
+// --- FREE VANILLA JS TEXT SPLITTER ---
+// Replaces the paid gsap-trial/SplitText plugin
+function createSplitText(selectors: string | string[]) {
+  const charsArray: HTMLElement[] = [];
+  const selectorArray = Array.isArray(selectors) ? selectors : [selectors];
+
+  selectorArray.forEach((selector) => {
+    const elements = document.querySelectorAll(selector);
+    elements.forEach((el) => {
+      const text = (el as HTMLElement).innerText;
+      el.innerHTML = ""; // clear original text
+      
+      const words = text.split(" ");
+      words.forEach((word, wordIndex) => {
+        const wordSpan = document.createElement("span");
+        wordSpan.className = "split-word";
+        wordSpan.style.display = "inline-block";
+
+        word.split("").forEach((char) => {
+          const charSpan = document.createElement("span");
+          charSpan.className = "split-char";
+          charSpan.style.display = "inline-block";
+          charSpan.innerText = char;
+          wordSpan.appendChild(charSpan);
+          charsArray.push(charSpan); // Save to our array for GSAP
+        });
+
+        el.appendChild(wordSpan);
+        if (wordIndex < words.length - 1) {
+          el.appendChild(document.createTextNode("\u00A0"));
+        }
+      });
+    });
+  });
+
+  return { chars: charsArray };
+}
+// --------------------------------------
+
 export function initialFX() {
   document.body.style.overflowY = "auto";
-  smoother.paused(false);
+  
+  if (smoother) {
+    smoother.paused(false);
+  }
+  
   document.getElementsByTagName("main")[0].classList.add("main-active");
+  
   gsap.to("body", {
     backgroundColor: "#0b080c",
     duration: 0.5,
     delay: 1,
   });
 
-  var landingText = new SplitText(
-    [".landing-info h3", ".landing-intro h2", ".landing-intro h1"],
-    {
-      type: "chars,lines",
-      linesClass: "split-line",
-    }
-  );
+  // Use our custom free splitter instead of the paid plugin
+  var landingText = createSplitText([
+    ".landing-info h3", 
+    ".landing-intro h2", 
+    ".landing-intro h1"
+  ]);
+
   gsap.fromTo(
     landingText.chars,
     { opacity: 0, y: 80, filter: "blur(5px)" },
@@ -33,9 +76,8 @@ export function initialFX() {
     }
   );
 
-  let TextProps = { type: "chars,lines", linesClass: "split-h2" };
-
-  var landingText2 = new SplitText(".landing-h2-info", TextProps);
+  var landingText2 = createSplitText(".landing-h2-info");
+  
   gsap.fromTo(
     landingText2.chars,
     { opacity: 0, y: 80, filter: "blur(5px)" },
@@ -61,6 +103,7 @@ export function initialFX() {
       delay: 0.8,
     }
   );
+
   gsap.fromTo(
     [".header", ".icons-section", ".nav-fade"],
     { opacity: 0 },
@@ -72,15 +115,16 @@ export function initialFX() {
     }
   );
 
-  var landingText3 = new SplitText(".landing-h2-info-1", TextProps);
-  var landingText4 = new SplitText(".landing-h2-1", TextProps);
-  var landingText5 = new SplitText(".landing-h2-2", TextProps);
+  var landingText3 = createSplitText(".landing-h2-info-1");
+  var landingText4 = createSplitText(".landing-h2-1");
+  var landingText5 = createSplitText(".landing-h2-2");
 
   LoopText(landingText2, landingText3);
   LoopText(landingText4, landingText5);
 }
 
-function LoopText(Text1: SplitText, Text2: SplitText) {
+// Updated TypeScript definitions so it accepts our custom text objects
+function LoopText(Text1: { chars: HTMLElement[] }, Text2: { chars: HTMLElement[] }) {
   var tl = gsap.timeline({ repeat: -1, repeatDelay: 1 });
   const delay = 4;
   const delay2 = delay * 2 + 1;
