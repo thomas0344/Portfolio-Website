@@ -1,5 +1,11 @@
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+// Instead of using the paid plugin, you split the text with vanilla JavaScript
+const text = "My Portfolio";
+const splitChars = text.split("").map((char, index) => (
+  <span key={index} className="char">{char}</span>
+));
+
+// Then animate all elements with the class .char using standard GSAP
+gsap.to(".char", { y: 0, stagger: 0.05 });import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollSmoother } from "gsap-trial/ScrollSmoother";
 import { SplitText } from "gsap-trial/SplitText";
 
