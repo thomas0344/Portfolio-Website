@@ -200,8 +200,7 @@
 }
 .landing-info h2 {
   margin: 0;
-  margin-top: -20px;
-  margin-left: 20px;
+  margin-top: -10px;
   font-family: "Geist", sans-serif;
   font-weight: 600;
   font-size: 32px;
@@ -355,4 +354,44 @@ h2.landing-info-h2 {
   h2.landing-info-h2 {
     font-size: 75px;
   }
+}
+
+@keyframes flashGlossyPurple {
+  0% {
+    color: #c481ff;
+    text-shadow: 
+      0 0 10px rgba(196, 129, 255, 0.8),
+      0 0 20px rgba(196, 129, 255, 0.5),
+      0 0 30px rgba(138, 43, 226, 0.4),
+      ; /* Glossy inner reflection */
+    filter: brightness(1);
+  }
+  50% {
+    color: #f59bf8;
+    text-shadow: 
+      0 0 15px rgba(245, 155, 248, 1),
+      0 0 30px rgba(245, 155, 248, 0.8),
+      0 0 50px rgba(196, 129, 255, 0.6),
+      0 0 80px rgba(138, 43, 226, 0.4),
+      ;
+    filter: brightness(1.2) contrast(1.1);
+  }
+  100% {
+    color: #c481ff;
+    text-shadow: 
+      0 0 10px rgba(196, 129, 255, 0.8),
+      0 0 20px rgba(196, 129, 255, 0.5),
+      0 0 30px rgba(138, 43, 226, 0.4),
+      ;
+    filter: brightness(1);
+  }
+}
+
+.landing-role-back {
+  animation: flashGlossyPurple 2s ease-in-out infinite;
+  background: linear-gradient(180deg, #fff 0%, #c481ff 50%, #8a2be2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+  padding-bottom: 5px; /* Prevent clipping */
 }

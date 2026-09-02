@@ -4,11 +4,13 @@ const About = () => {
   return (
     <div className="about-section" id="about">
       <div className="about-me">
-        <h3 className="title">About Me</h3>
+        <h3 className="title">ABOUT ME</h3>
         <p className="para">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic quis
-          dolores numquam iusto Ratione earum ducimus autem id iure pariatur
-          dolorum quae maiores.
+          Motivated Computer Science & Engineering professional with hands-on
+          expertise in software testing, DevOps, secure network protocols, and
+          full-stack development. Experienced in manual testing, Docker, CI/CD
+          workflows, and building robust, scalable platforms with a strong focus
+          on security and performance.
         </p>
       </div>
     </div>

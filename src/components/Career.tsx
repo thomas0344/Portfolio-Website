@@ -15,43 +15,40 @@ const Career = () => {
           <div className="career-info-box">
             <div className="career-info-in">
               <div className="career-role">
-                <h4>Position In Company</h4>
-                <h5>Company Name</h5>
+                <h4>B.Tech in Computer Science & Engineering</h4>
+                <h5>Vimal Jyothi Engineering College</h5>
               </div>
-              <h3>20XX</h3>
+              <h3>2022-26</h3>
             </div>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim
-              labore sit non ipsum temporibus quidem, deserunt eaque officiis
-              mollitia ratione suscipit repellat.
+              Focused on core computer science, software testing, algorithm optimization,
+              cloud infrastructure, and network protocols.
             </p>
           </div>
           <div className="career-info-box">
             <div className="career-info-in">
               <div className="career-role">
-                <h4>Position In Company</h4>
-                <h5>Company Name</h5>
+                <h4>Cybersecurity Trainee</h4>
+                <h5>Offenso Hackers Academy (Remote / Online)</h5>
               </div>
-              <h3>20XX</h3>
+              <h3>2025</h3>
             </div>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim
-              labore sit non ipsum temporibus quidem, deserunt eaque officiis
-              mollitia ratione suscipit repellat.
+              Completed hands-on remote training covering network protocols, TCP/IP,
+              vulnerability analysis, Kali Linux, and security auditing.
             </p>
           </div>
           <div className="career-info-box">
             <div className="career-info-in">
               <div className="career-role">
-                <h4>Position In Company</h4>
-                <h5>Company Name</h5>
+                <h4>UI/UX Design Intern</h4>
+                <h5>Pace Lab | Kochi (1 Month)</h5>
               </div>
-              <h3>NOW</h3>
+              <h3>2025</h3>
             </div>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim
-              labore sit non ipsum temporibus quidem, deserunt eaque officiis
-              mollitia ratione suscipit repellat.
+              Created interactive prototypes, wireframes, and design flows in Figma and
+              Adobe XD, collaborating directly with developers on web usability.
             </p>
           </div>
         </div>

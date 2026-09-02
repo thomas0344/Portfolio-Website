@@ -1,0 +1,87 @@
+.cert-section {
+  width: 100%;
+  padding: 100px 0;
+}
+.cert-container {
+  width: var(--cWidth);
+  max-width: var(--cMaxWidth);
+  margin: auto;
+}
+.cert-container h2 {
+  font-size: calc(3vw + 20px);
+  margin-bottom: 50px;
+}
+.cert-container h2 span {
+  color: var(--accentColor);
+  font-style: italic;
+}
+.cert-flex {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.cert-box {
+  background-color: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  padding: 40px;
+  transition: 0.3s;
+}
+.cert-box:hover {
+  border: 1px solid var(--accentColor);
+  box-shadow: 0 0 20px rgba(196, 129, 255, 0.2);
+}
+.cert-info h3 {
+  font-size: 24px;
+  margin: 0 0 10px 0;
+  display: flex;
+  align-items: center;
+}
+.cert-info h4 {
+  font-size: 16px;
+  color: #aaa;
+  margin: 0 0 20px 0;
+  font-weight: 400;
+}
+.cert-info p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #ccc;
+  margin-bottom: 20px;
+}
+.cert-tags {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.cert-tags span {
+  font-size: 12px;
+  padding: 5px 12px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+@media screen and (max-width: 768px) {
+  .cert-box {
+    padding: 25px;
+  }
+  .cert-info h3 {
+    font-size: 20px;
+  }
+}
+
+.cert-link {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 20px;
+  color: var(--accentColor);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  gap: 5px;
+  transition: 0.3s;
+}
+.cert-link:hover {
+  text-shadow: 0 0 10px rgba(196, 129, 255, 0.5);
+}

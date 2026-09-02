@@ -1,0 +1,63 @@
+.test-section {
+  width: 100%;
+  padding: 100px 0;
+}
+.test-container {
+  width: var(--cWidth);
+  max-width: var(--cMaxWidth);
+  margin: auto;
+}
+.test-container h2 {
+  font-size: calc(3vw + 20px);
+  margin-bottom: 50px;
+}
+.test-container h2 span {
+  color: var(--accentColor);
+  font-style: italic;
+}
+.test-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 40px;
+}
+.test-card {
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.05), rgba(0, 0, 0, 0.2));
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  padding: 40px;
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.test-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 30px rgba(196, 129, 255, 0.15);
+  border: 1px solid rgba(196, 129, 255, 0.3);
+}
+.test-icon {
+  font-size: 30px;
+  color: var(--accentColor);
+  opacity: 0.5;
+  margin-bottom: 20px;
+}
+.test-card p {
+  font-size: 15px;
+  line-height: 1.8;
+  color: #ddd;
+  font-style: italic;
+  margin-bottom: 30px;
+}
+.test-author h4 {
+  margin: 0 0 5px 0;
+  font-size: 18px;
+  color: #fff;
+}
+.test-author span {
+  font-size: 13px;
+  color: #888;
+}
+
+@media screen and (max-width: 768px) {
+  .test-card {
+    padding: 30px;
+  }
+}

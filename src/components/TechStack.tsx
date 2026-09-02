@@ -13,14 +13,13 @@ import {
 
 const textureLoader = new THREE.TextureLoader();
 const imageUrls = [
-  "/images/react2.webp",
-  "/images/next2.webp",
-  "/images/node2.webp",
-  "/images/express.webp",
-  "/images/mongo.webp",
-  "/images/mysql.webp",
-  "/images/typescript.webp",
-  "/images/javascript.webp",
+  "/images/tech/docker.svg",
+  "/images/tech/java.svg",
+  "/images/tech/jenkins.svg",
+  "/images/tech/selenium.svg",
+  "/images/tech/kubernetes.svg",
+  "/images/tech/git.svg",
+  "/images/tech/aws.svg",
 ];
 const textures = imageUrls.map((url) => textureLoader.load(url));
 
@@ -156,12 +155,11 @@ const TechStack = () => {
       (texture) =>
         new THREE.MeshPhysicalMaterial({
           map: texture,
-          emissive: "#ffffff",
-          emissiveMap: texture,
-          emissiveIntensity: 0.3,
-          metalness: 0.5,
-          roughness: 1,
-          clearcoat: 0.1,
+          color: "#ffffff",
+          roughness: 0.2,
+          metalness: 0.1,
+          clearcoat: 1,
+          clearcoatRoughness: 0.1,
         })
     );
   }, []);
